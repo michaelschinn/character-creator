@@ -19,24 +19,37 @@ export default class Login extends Component{
                 "Access-Control-Allow-Headers": "Content-Type",
                 "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE",
                 "Access-Control-Allow-Credentials": true
-            }
+            },
+            "uAuth":{}
+        }
+        this.response = {};
+    }
+
+    componentDidUpdate(){
+        console.log("component update fired!");
+        if(this.response !== {}){
+            console.log("authenticated");
+            this.setState({
+                "uAuth": this.response
+            });
+            sessionStorage.setItem('uAuth', JSON.stringify(this.state.uAuth));
+            this.response = {};
         }
     }
 
     attemptLogin =  async (e) => {
         e.preventDefault();
-        let response = await Axios_Connect(this.state,'login');
-        console.log(response);
+        this.response = await Axios_Connect(this.state,'login');
     }
 
     render(){
         return(
             <>
-            <form id='loginForm' onSubmit={this.attemptLogin}>
-                <input type='text' placeholder='username' />
-                <input type='password' placeholder='password' />
-                <button type="submit">Login</button>
-            </form>
+                <form id='loginForm' onSubmit={this.attemptLogin}>
+                    <input name="username" type='text' placeholder='username' />
+                    <input name="password" type='password' placeholder='password' />
+                    <button name="login" type="submit">Login</button>
+                </form>
             </>
         )
     }

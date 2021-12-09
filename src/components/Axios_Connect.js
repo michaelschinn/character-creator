@@ -7,8 +7,8 @@ export default function Axios_Connect(props, func){
 
         case 'login':
             axios.post(`${axiosBaseURI}oauth/token`, props.user, props.headers).then(Response => {
-                let response = Response;
-                return response;
+                console.log(Response);
+                return Response;
             });
             break;
 
