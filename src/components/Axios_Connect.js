@@ -1,6 +1,6 @@
 import axios from 'axios';
 export default function Axios_Connect(props, func){
-    const axiosBaseURI = 'https://port-8000-laravel-michaelstephenchinn186499.preview.codeanywhere.com/';
+    const axiosBaseURI = 'https://character-creator-backend-michaelstephenchinn186499.codeanyapp.com/';
     switch(func){
         case 'register':
             break;
