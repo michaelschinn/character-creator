@@ -1,25 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Title from './pages/title';
+import NewCharacter from './pages/new_character';
+import Character from './pages/character';
+import SignUp from './pages/signup';
+import ManuallyCreate from './pages/manually_create';
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+        <Routes>
+            <Route index path='/' element={<Title />} />
+            <Route path='new_character' element={<NewCharacter />} />
+            <Route path='character' element={<Character />} />
+            <Route path='signup' element={<SignUp />} />
+            <Route path='manually_create' element={<ManuallyCreate />} />
+        </Routes>
+    </BrowserRouter>
   );
 }
-
-export default App;
