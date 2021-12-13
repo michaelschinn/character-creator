@@ -15,6 +15,7 @@ export default function ViewCharacter(){
                         <br />
                         Vitality: 3
                         <br />
+                        Dexterity: 10
                         <br />
                         Intelligence: 8
                         <br />
