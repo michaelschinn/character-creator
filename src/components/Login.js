@@ -3,9 +3,11 @@ export default function Login(props){
 
     let attemptLogin =  async (e) => {
         e.preventDefault();
-        let response = await Axios_Connect(props.user, props.headers, 'login');
-        console.log(response);
-        props.setToken(response.access_token);
+        let access_token = await Axios_Connect(props, props.user, props.headers, 'login');
+        //console.log(response);
+               
+        sessionStorage.setItem('uAuth', access_token);
+        props.setToken(access_token);
     }
 
     return(

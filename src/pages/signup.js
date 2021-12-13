@@ -9,8 +9,8 @@ export default function New_Character(){
                     <input name="password" type='password' placeholder='Password' />
                     <button>SignUp</button>
                 </form>
+                <Link to="/"><button className="backButton">Back to Login</button></Link>
             </div>
-            <Link to="/"><button className="backButton">Back to Login</button></Link>
         </>
     );
 }

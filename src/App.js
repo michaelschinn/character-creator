@@ -11,15 +11,15 @@ import Page from "./components/Page";
 import { useEffect, useState } from 'react';
 
 export default function App() {
-    const [user, setUser] = useState({
+    const user = {
         "grant_type": "password",
         "client_id": "2",
         "client_secret": "hLsOkd8UU2AMsfYaYKQ1gG2RaVqw5ejjqxHHv4Jl",
         "password": "changeme",
         "username": "jhalljhall1@gmail.com",
         "scope": ""
-    });
-    const [headers, setHeader] = useState({
+    };
+    const headers ={
         Accept: "application/json",
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
@@ -27,23 +27,24 @@ export default function App() {
         "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE",
         "Access-Control-Allow-Credentials": true
 
-    });
+    };
     const navigate = useNavigate();
-    const [token, setToken] = useState('');
+    const [token, setToken] = useState('0');
     useEffect(() => {
         let sessionToken = window.sessionStorage.getItem('uAuth');
-        console.log(sessionToken);
+        //console.log(sessionToken);
         if (sessionToken){
             setToken(sessionToken);
         }
     }, []);
     useEffect(() => {
-            if(token.length > 0){
+            if(token.length > 1){
              navigate('/character');
             } else {
             navigate('/');
         }
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [token]);
   return (
         <Routes>

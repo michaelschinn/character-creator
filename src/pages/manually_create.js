@@ -24,7 +24,7 @@ export default function ManuallyCreate(){
                     <option>Backstory 3</option>
                 </select>
                 <Link to="/view_character"><button>Create Character</button></Link>
-                <Link to="/new_character"><button class="backButton">Cancel</button></Link>
+                <Link to="/new_character"><button className="backButton">Cancel</button></Link>
             </form>
         </div>
         </>
