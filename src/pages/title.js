@@ -12,8 +12,8 @@ export default function Title(props){
                     <Login user={props.user} headers={props.headers} setToken={props.setToken} />
                 </form>
                 <p>Don't have an account yet? <Link to='signup'>Click here to SignUp</Link></p>
-            </div>
             <button className="backButton">Back to Portfolio</button>
+            </div>
         </>
     );
 }

@@ -1,12 +1,15 @@
-import { Link } from 'react-router-dom';
 import Logout from '../components/Logout';
+import Menu from '../components/Menu';
 
 export default function Character(props){
+    const menu = [
+        {'name':'New Character', 'link':'/new_character', 'description':'', 'enabled':'true'},
+        {'name':'My Characters', 'link':'/my_characters', 'description':'', 'enabled':'false'}
+    ]
+
     return (
         <>
-            <Link to='/new_character'><button>New Character</button></Link>
-            <Link to='/my_characters'><button>My Characters</button></Link>
-            <Logout user={props.user} setToken={props.setToken} token={props.token} headers={props.headers} />
+            <Menu menuList={menu} other={<Logout user={props.user} setToken={props.setToken} token={props.token} headers={props.headers} />} />
         </>
     );
 }

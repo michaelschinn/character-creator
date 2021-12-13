@@ -1,11 +1,13 @@
 
-export default function NewCharacter(){
+import Menu from '../components/Menu';
+export default function NewCharacter(props){
+    const menu = [
+        {'name':'Generate', 'link':'/gen_character', 'description':'', 'enabled':'false'},
+        {'name':'Manually Create', 'link':'/manually_create', 'description':'', 'enabled':'true'},
+        {'name':'Back', 'link':'/character', 'description':'', 'enabled':'true'}
+    ]
     return (
-        <>
-            <h1>New Character</h1>
-            <button>Auto Generate</button>
-            <button>Manually Create</button>
-            <button>Back</button>
-        </>
+        
+        <Menu menuList={menu}/>
     );
 }

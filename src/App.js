@@ -6,6 +6,7 @@ import Character from './pages/character';
 import NewCharacter from './pages/new_character';
 import MyCharacters from './pages/my_characters';
 import ManuallyCreate from './pages/manually_create';
+import ViewCharacter from './pages/view_character';
 import Page from "./components/Page";
 import { useEffect, useState } from 'react';
 
@@ -64,6 +65,9 @@ export default function App() {
                 } />
                 <Route path='/manually_create' element={
                     <ManuallyCreate user={user} headers={headers}  token={token} />
+                } />
+                <Route path='/view_character' element={
+                    <ViewCharacter user={user} headers={headers} setToken={setToken} token={token} />
                 } />
             </Route>
         </Routes>
