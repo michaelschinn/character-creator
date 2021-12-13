@@ -1,9 +1,12 @@
-export default function Character(){
+import { Link } from 'react-router-dom';
+import Logout from '../components/Logout';
+
+export default function Character(props){
     return (
         <>
-            <h1>Character</h1>
-            <button>New Character</button>
-            <button>Existing Character</button>
+            <Link to='/new_character'><button>New Character</button></Link>
+            <Link to='/my_characters'><button>My Characters</button></Link>
+            <Logout user={props.user} setToken={props.setToken} token={props.token} headers={props.headers} />
         </>
     );
 }

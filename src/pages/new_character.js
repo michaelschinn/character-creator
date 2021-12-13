@@ -5,6 +5,7 @@ export default function NewCharacter(){
             <h1>New Character</h1>
             <button>Auto Generate</button>
             <button>Manually Create</button>
+            <button>Back</button>
         </>
     );
 }

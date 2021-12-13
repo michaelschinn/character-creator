@@ -1,21 +1,28 @@
 import axios from 'axios';
-export default function Axios_Connect(props, func){
+export default function Axios_Connect(user, headers, func) {
+
     const axiosBaseURI = 'https://character-creator-backend-michaelstephenchinn186499.codeanyapp.com/';
-    switch(func){
+    switch(func) {
         case 'register':
             break;
 
         case 'login':
-            axios.post(`${axiosBaseURI}oauth/token`, props.user, props.headers).then(Response => {
-                console.log(Response);
-                return Response;
+            return axios.post(`${axiosBaseURI}oauth/token`, user, headers).then(Response => {
+               
+                sessionStorage.setItem('uAuth', Response.data.access_token);
+                return Response.data;
             });
-            break;
 
         case 'logout':
-            break;
+            
+            return axios.get(`${axiosBaseURI}api/v1/logout`, user, headers).then(Response => {
+                
+                sessionStorage.removeItem('uAuth');
+                return Response;
+            });
 
         default:
             break;
     }
+    
 }
