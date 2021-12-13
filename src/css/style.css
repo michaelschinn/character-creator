@@ -74,8 +74,17 @@ h1{
     margin-bottom:var(--default-grid-unit);
     font-size: calc(var(--default-grid-unit) * 1.5);
 }
+h2{
+    font-family: 'chopin';
+    font-size: calc(var(--default-grid-unit) * 1.75);
+    font-weight: 400;
+    color:white;
+    text-align: left;
+    padding: var(--default-grid-unit) var(--default-grid-unit) 0;
+    background-color: rgba(0,0,0,.5);
+}
 
-.login, .signUp , .manuallyCreate{
+.login, .signUp , .manuallyCreate, .menu{
     height: fit-content;
     max-width: 100vw;
     margin-bottom: calc(var(--default-grid-unit) * 2);
@@ -91,8 +100,12 @@ h1{
     text-align: center;
     margin-bottom: var(--default-grid-unit);
 } 
+.viewCharacter{
+    width: 100%;
+}
 .viewCharacter p{
     text-align:left;
+    background-color: rgba(0,0,0,.5);
 }
 
 .login p a {
@@ -103,12 +116,43 @@ h1{
 .sheet{
     display:flex;
     position: relative;
+    margin-bottom: var(--default-grid-unit);
+    border: 2px solid var(--primary-color);
+    box-shadow: 5px 5px 16px 0 rgba(0,0,0,.3);
+    flex-direction: column;
 }
 
 .charImage{
+    display:flex;
     background-image: url(../images/assassin-male-01.jpg);
     background-position: center 0px;
     background-size: cover;
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    height: calc(100vh - 100px);
+    flex-wrap: wrap;
+}
+
+.viewCharacter p.genderClass{
+    font-size: var(--default-grid-unit);
+    margin-bottom: calc(var(--default-grid-unit) * 3);
+    padding: 0 var(--default-grid-unit) var(--default-grid-unit);
+}
+
+.charData{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.charData p{
+    font-size: var(--default-grid-unit);
+    padding: var(--default-grid-unit);
+    margin-bottom: 0;
+}
+
+.charControl{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
 form{
@@ -135,7 +179,7 @@ input, select{
     margin-bottom: calc(var(--default-grid-unit) * 2);
 }
 
-form button{
+form button, .saveButton{
     margin-bottom: calc(var(--default-grid-unit) * 2);
 /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#4b6943+0,517345+8,629e4c+27,61b747+35,65bf47+41,65bf47+49,57804a+51,0a2c00+52,0a2c00+100 */
 background: rgb(75,105,67); /* Old browsers */
@@ -152,7 +196,28 @@ color:white;
 width:100%;
 }
 
-form button:hover{
+.editButton{
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#436169+0,456b73+8,4c909e+27,47a0b7+35,47a9bf+41,47a9bf+49,4a7580+51,00232c+52,00232c+100 */
+background: rgb(67,97,105); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(67,97,105,1) 0%, rgba(69,107,115,1) 8%, rgba(76,144,158,1) 27%, rgba(71,160,183,1) 35%, rgba(71,169,191,1) 41%, rgba(71,169,191,1) 49%, rgba(74,117,128,1) 51%, rgba(0,35,44,1) 52%, rgba(0,35,44,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  rgba(67,97,105,1) 0%,rgba(69,107,115,1) 8%,rgba(76,144,158,1) 27%,rgba(71,160,183,1) 35%,rgba(71,169,191,1) 41%,rgba(71,169,191,1) 49%,rgba(74,117,128,1) 51%,rgba(0,35,44,1) 52%,rgba(0,35,44,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  rgba(67,97,105,1) 0%,rgba(69,107,115,1) 8%,rgba(76,144,158,1) 27%,rgba(71,160,183,1) 35%,rgba(71,169,191,1) 41%,rgba(71,169,191,1) 49%,rgba(74,117,128,1) 51%,rgba(0,35,44,1) 52%,rgba(0,35,44,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#436169', endColorstr='#00232c',GradientType=0 ); /* IE6-9 */
+
+opacity:.75;
+
+border: 2px solid var(--primary-color);
+box-shadow: 5px 5px 16px 0 rgba(0,0,0,.3);
+color:white;
+width:100%;
+}
+
+.charControl a *{
+    cursor: pointer;
+    margin-bottom: 0;
+}
+
+form button:hover, .saveButton:hover, .editButton:hover, .backButton:hover{
     opacity:1;
 }
 
@@ -279,7 +344,7 @@ button.backButton:hover{
     display: inline-block;
     font-size: calc(var(--default-grid-unit) * 2);
     text-decoration: none;
-    opacity:.75;
+    opacity:1;
     color:white;
     padding: var(--default-grid-unit);
     background-color: transparent;
@@ -287,16 +352,15 @@ button.backButton:hover{
     text-shadow: 1px 1px 1px rgba(0,0,0,.75);
 }
 .menuItem.disabled{
-    opacity:.5;
     font-size: calc(var(--default-grid-unit) * 1.5);
-    color:white;
+    color:rgb(202, 202, 202);
     padding: var(--default-grid-unit);
     text-shadow: 1px 1px 1px rgba(0,0,0,.75);
     cursor: default;
 }
 
 .menuItem a:hover, .menu button:hover{
-    opacity:1;
+    transform: scale(1.1);
 }
 
 @media screen and (min-width: 410px){
