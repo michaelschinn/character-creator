@@ -1,21 +1,33 @@
 import axios from 'axios';
-export default function Axios_Connect(props, func){
-    const axiosBaseURI = 'https://port-8000-laravel-michaelstephenchinn186499.preview.codeanywhere.com/';
-    switch(func){
+export default function Axios_Connect(props, user, headers, func) {
+
+    const axiosBaseURI = 'https://character-creator-backend-michaelstephenchinn186499.codeanyapp.com/';
+    switch(func) {
         case 'register':
             break;
 
         case 'login':
-            axios.post(`${axiosBaseURI}oauth/token`, props.user, props.headers).then(Response => {
-                let response = Response;
-                return response;
+            return axios.post(`${axiosBaseURI}oauth/token`, user, headers).then(Response => {
+                //console.log(Response);
+                return Response.data.access_token;
             });
-            break;
 
         case 'logout':
-            break;
+            return axios({
+                url:`${axiosBaseURI}api/v1/logout`,
+                method: "get",
+                headers
+            }).then(r => {
+                //console.log(r);    
+                sessionStorage.removeItem('uAuth');
+                props.setToken('');
+                return r;
+            }).catch(e => {
+                console.log(e);
+            });
 
         default:
             break;
     }
+    
 }

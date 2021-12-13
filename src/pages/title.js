@@ -1,13 +1,19 @@
 import {Link} from 'react-router-dom';
 import Login from '../components/Login';
 
-export default function Title(){
+export default function Title(props){
     return (
         <>
-            <h1>Character Creator</h1>
-            <Login />
-            <p>Don't have an account yet? Click here to <Link to='signup'>SignUp</Link></p>
-            <button>Back to Portfolio</button>
+            <div className="login">
+                <h1>Login</h1>
+                <form id='loginForm'>
+                    <input name="username" type='text' placeholder='username' />
+                    <input name="password" type='password' placeholder='password' />
+                    <Login user={props.user} headers={props.headers} setToken={props.setToken} />
+                </form>
+                <p>Don't have an account yet? <Link to='signup'>Click here to SignUp</Link></p>
+            <button className="backButton">Back to Portfolio</button>
+            </div>
         </>
     );
 }
